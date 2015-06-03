@@ -79,32 +79,6 @@ namespace MiriaCore
             }
         }
 
-        private void DoSingleProcess(AudioProcess proc)
-        {
-            if (!AudioFileReader.FileExists(textBox_inputFile.Text))
-            {
-                MessageBox.Show("ファイルが無いよー？ : " + textBox_inputFile.Text);
-                return;
-            }
-            if (File.Exists(textBox_outputFile.Text))
-            {
-                if (MessageBox.Show(
-                    "ファイルを上書きしてもいい？ : " + textBox_outputFile.Text,
-                    "Overwrite Confirm",
-                    MessageBoxButtons.YesNoCancel,
-                    MessageBoxIcon.Question) != DialogResult.Yes)
-                {
-                    return;
-                }
-            }
-
-            var buf2 = AudioFileReader.ReadAllSamples(textBox_inputFile.Text);
-
-            var buf3 = proc.Do(buf2);
-
-            WaveFileWriter.WriteAllSamples(textBox_outputFile.Text, buf3, buf3.Length, 44100, 32);  // FIXME: サンプリングレートとビット深度
-        }
-
         private void button_integrate_Click(object sender, EventArgs e)
         {
             DoSingleProcess(new Integral());
@@ -117,9 +91,15 @@ namespace MiriaCore
 
         private void button_conv_Click(object sender, EventArgs e)
         {
+            if (textBox_ir.Text == "")
+            {
+                MessageBox.Show("インパルス応答の入力ファイルの欄が空欄になってるよ！");
+                textBox_ir.Text = "【ここだよ！！】";
+                return;
+            }
             if (!AudioFileReader.FileExists(textBox_ir.Text))
             {
-                MessageBox.Show("ファイルが無いよー？ : " + textBox_ir.Text);
+                MessageBox.Show("インパルス応答の入力ファイルが無いよー？ : " + textBox_ir.Text);
                 return;
             }
 
@@ -134,6 +114,33 @@ namespace MiriaCore
             // proc.FadeOutTime =
             // proc.Threshold =
             DoSingleProcess(proc);
+        }
+
+        private void button_openInput_Click(object sender, EventArgs e)
+        {
+            string filename = ShowOpenWaveFileDialog("Select Input Audio File");
+            if (filename != null)
+            {
+                textBox_inputFile.Text = filename;
+            }
+        }
+
+        private void button_openOutput_Click(object sender, EventArgs e)
+        {
+            string filename = ShowSaveWaveFileDialog("Save Wave File As");
+            if (filename != null)
+            {
+                textBox_outputFile.Text = filename;
+            }
+        }
+
+        private void button_openIR_Click(object sender, EventArgs e)
+        {
+            string filename = ShowOpenWaveFileDialog("Select Impulse Response");
+            if (filename != null)
+            {
+                textBox_ir.Text = filename;
+            }
         }
     }
 }

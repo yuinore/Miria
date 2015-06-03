@@ -34,6 +34,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button_openOutput = new System.Windows.Forms.Button();
+            this.button_openInput = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_outputFile = new System.Windows.Forms.TextBox();
@@ -42,13 +44,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button_openIR = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button_tailcutplus = new System.Windows.Forms.Button();
             this.button_conv = new System.Windows.Forms.Button();
             this.textBox_ir = new System.Windows.Forms.TextBox();
             this.button_diff = new System.Windows.Forms.Button();
             this.button_integrate = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button_tailcutplus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,7 +82,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_inputFile.Location = new System.Drawing.Point(65, 23);
             this.textBox_inputFile.Name = "textBox_inputFile";
-            this.textBox_inputFile.Size = new System.Drawing.Size(588, 19);
+            this.textBox_inputFile.Size = new System.Drawing.Size(567, 19);
             this.textBox_inputFile.TabIndex = 1;
             this.textBox_inputFile.Text = "(Drop .wav Here!!)";
             this.textBox_inputFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragDrop);
@@ -121,6 +124,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button_openOutput);
+            this.tabPage1.Controls.Add(this.button_openInput);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.textBox_outputFile);
@@ -132,6 +137,28 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Single Input";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button_openOutput
+            // 
+            this.button_openOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_openOutput.Location = new System.Drawing.Point(638, 55);
+            this.button_openOutput.Name = "button_openOutput";
+            this.button_openOutput.Size = new System.Drawing.Size(21, 23);
+            this.button_openOutput.TabIndex = 3;
+            this.button_openOutput.Text = "...";
+            this.button_openOutput.UseVisualStyleBackColor = true;
+            this.button_openOutput.Click += new System.EventHandler(this.button_openOutput_Click);
+            // 
+            // button_openInput
+            // 
+            this.button_openInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_openInput.Location = new System.Drawing.Point(638, 21);
+            this.button_openInput.Name = "button_openInput";
+            this.button_openInput.Size = new System.Drawing.Size(21, 23);
+            this.button_openInput.TabIndex = 3;
+            this.button_openInput.Text = "...";
+            this.button_openInput.UseVisualStyleBackColor = true;
+            this.button_openInput.Click += new System.EventHandler(this.button_openInput_Click);
             // 
             // label3
             // 
@@ -158,7 +185,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_outputFile.Location = new System.Drawing.Point(65, 57);
             this.textBox_outputFile.Name = "textBox_outputFile";
-            this.textBox_outputFile.Size = new System.Drawing.Size(588, 19);
+            this.textBox_outputFile.Size = new System.Drawing.Size(567, 19);
             this.textBox_outputFile.TabIndex = 1;
             this.textBox_outputFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragDrop);
             this.textBox_outputFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragEnter);
@@ -206,6 +233,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button_openIR);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.button_tailcutplus);
             this.tabPage4.Controls.Add(this.button_conv);
@@ -220,6 +248,17 @@
             this.tabPage4.Text = "Single Process";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button_openIR
+            // 
+            this.button_openIR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_openIR.Location = new System.Drawing.Point(638, 81);
+            this.button_openIR.Name = "button_openIR";
+            this.button_openIR.Size = new System.Drawing.Size(21, 23);
+            this.button_openIR.TabIndex = 3;
+            this.button_openIR.Text = "...";
+            this.button_openIR.UseVisualStyleBackColor = true;
+            this.button_openIR.Click += new System.EventHandler(this.button_openIR_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -228,6 +267,16 @@
             this.label4.Size = new System.Drawing.Size(127, 12);
             this.label4.TabIndex = 2;
             this.label4.Text = "Impulse Response Input";
+            // 
+            // button_tailcutplus
+            // 
+            this.button_tailcutplus.Location = new System.Drawing.Point(22, 110);
+            this.button_tailcutplus.Name = "button_tailcutplus";
+            this.button_tailcutplus.Size = new System.Drawing.Size(126, 23);
+            this.button_tailcutplus.TabIndex = 1;
+            this.button_tailcutplus.Text = "TailCutPlus";
+            this.button_tailcutplus.UseVisualStyleBackColor = true;
+            this.button_tailcutplus.Click += new System.EventHandler(this.button_tailcutplus_Click);
             // 
             // button_conv
             // 
@@ -246,7 +295,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_ir.Location = new System.Drawing.Point(281, 83);
             this.textBox_ir.Name = "textBox_ir";
-            this.textBox_ir.Size = new System.Drawing.Size(372, 19);
+            this.textBox_ir.Size = new System.Drawing.Size(351, 19);
             this.textBox_ir.TabIndex = 1;
             this.textBox_ir.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragDrop);
             this.textBox_ir.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragEnter);
@@ -281,16 +330,6 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Batch Process";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // button_tailcutplus
-            // 
-            this.button_tailcutplus.Location = new System.Drawing.Point(22, 110);
-            this.button_tailcutplus.Name = "button_tailcutplus";
-            this.button_tailcutplus.Size = new System.Drawing.Size(126, 23);
-            this.button_tailcutplus.TabIndex = 1;
-            this.button_tailcutplus.Text = "TailCutPlus";
-            this.button_tailcutplus.UseVisualStyleBackColor = true;
-            this.button_tailcutplus.Click += new System.EventHandler(this.button_tailcutplus_Click);
             // 
             // MainControl
             // 
@@ -338,5 +377,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_ir;
         private System.Windows.Forms.Button button_tailcutplus;
+        private System.Windows.Forms.Button button_openOutput;
+        private System.Windows.Forms.Button button_openInput;
+        private System.Windows.Forms.Button button_openIR;
     }
 }
