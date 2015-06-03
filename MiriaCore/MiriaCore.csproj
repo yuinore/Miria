@@ -45,6 +45,7 @@
     <Compile Include="AudioProcesses\Convolution.cs" />
     <Compile Include="AudioProcesses\Differential.cs" />
     <Compile Include="AudioProcesses\Integral.cs" />
+    <Compile Include="AudioProcesses\TailCutPlus.cs" />
     <Compile Include="MainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

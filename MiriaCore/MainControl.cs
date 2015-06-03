@@ -127,5 +127,13 @@ namespace MiriaCore
 
             DoSingleProcess(new Convolution(buf2));
         }
+
+        private void button_tailcutplus_Click(object sender, EventArgs e)
+        {
+            TailCutPlus proc = new TailCutPlus();
+            // proc.FadeOutTime =
+            // proc.Threshold =
+            DoSingleProcess(proc);
+        }
     }
 }

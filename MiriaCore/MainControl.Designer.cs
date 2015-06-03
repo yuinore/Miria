@@ -42,12 +42,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.button_conv = new System.Windows.Forms.Button();
+            this.textBox_ir = new System.Windows.Forms.TextBox();
             this.button_diff = new System.Windows.Forms.Button();
             this.button_integrate = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.textBox_ir = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button_tailcutplus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -206,6 +207,7 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.button_tailcutplus);
             this.tabPage4.Controls.Add(this.button_conv);
             this.tabPage4.Controls.Add(this.textBox_ir);
             this.tabPage4.Controls.Add(this.button_diff);
@@ -218,6 +220,15 @@
             this.tabPage4.Text = "Single Process";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(154, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Impulse Response Input";
+            // 
             // button_conv
             // 
             this.button_conv.Location = new System.Drawing.Point(22, 81);
@@ -227,6 +238,18 @@
             this.button_conv.Text = "Convolve";
             this.button_conv.UseVisualStyleBackColor = true;
             this.button_conv.Click += new System.EventHandler(this.button_conv_Click);
+            // 
+            // textBox_ir
+            // 
+            this.textBox_ir.AllowDrop = true;
+            this.textBox_ir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_ir.Location = new System.Drawing.Point(281, 83);
+            this.textBox_ir.Name = "textBox_ir";
+            this.textBox_ir.Size = new System.Drawing.Size(372, 19);
+            this.textBox_ir.TabIndex = 1;
+            this.textBox_ir.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragDrop);
+            this.textBox_ir.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragEnter);
             // 
             // button_diff
             // 
@@ -259,26 +282,15 @@
             this.tabPage5.Text = "Batch Process";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // textBox_ir
+            // button_tailcutplus
             // 
-            this.textBox_ir.AllowDrop = true;
-            this.textBox_ir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_ir.Location = new System.Drawing.Point(153, 117);
-            this.textBox_ir.Name = "textBox_ir";
-            this.textBox_ir.Size = new System.Drawing.Size(500, 19);
-            this.textBox_ir.TabIndex = 1;
-            this.textBox_ir.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragDrop);
-            this.textBox_ir.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox_inputFile_DragEnter);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Impulse Response Input";
+            this.button_tailcutplus.Location = new System.Drawing.Point(22, 110);
+            this.button_tailcutplus.Name = "button_tailcutplus";
+            this.button_tailcutplus.Size = new System.Drawing.Size(126, 23);
+            this.button_tailcutplus.TabIndex = 1;
+            this.button_tailcutplus.Text = "TailCutPlus";
+            this.button_tailcutplus.UseVisualStyleBackColor = true;
+            this.button_tailcutplus.Click += new System.EventHandler(this.button_tailcutplus_Click);
             // 
             // MainControl
             // 
@@ -325,5 +337,6 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_ir;
+        private System.Windows.Forms.Button button_tailcutplus;
     }
 }
