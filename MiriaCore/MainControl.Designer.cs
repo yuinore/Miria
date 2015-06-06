@@ -106,7 +106,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
             this.splitContainer1.Size = new System.Drawing.Size(687, 489);
-            this.splitContainer1.SplitterDistance = 162;
+            this.splitContainer1.SplitterDistance = 221;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -119,7 +119,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(683, 158);
+            this.tabControl1.Size = new System.Drawing.Size(683, 217);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -133,7 +133,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(675, 132);
+            this.tabPage1.Size = new System.Drawing.Size(675, 191);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Single Input";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -228,7 +228,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(683, 315);
+            this.tabControl2.Size = new System.Drawing.Size(683, 256);
             this.tabControl2.TabIndex = 1;
             // 
             // tabPage4
@@ -243,7 +243,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(675, 289);
+            this.tabPage4.Size = new System.Drawing.Size(675, 230);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Single Process";
             this.tabPage4.UseVisualStyleBackColor = true;
