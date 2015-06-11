@@ -25,6 +25,8 @@ namespace MiriaCore
         {
             get
             {
+                if (inst == null) return null;
+
                 return inst.ToString();
             }
         }
@@ -65,10 +67,33 @@ namespace MiriaCore
                 p.WrapContents = false;
                 p.AutoSize = true;
                 p.Controls.Add(new Label() { Text = prop.Name, Margin = new System.Windows.Forms.Padding(7) });
-                p.Controls.Add(new TextBox() { Text = prop.GetValue(inst).ToString() });
+                var tbox = new TextBox() { Text = prop.GetValue(inst).ToString(), Name = prop.Name };
+                tbox.TextChanged += tbox_TextChanged;
+                p.Controls.Add(tbox);
 
                 flowLayoutPanel1.Controls.Add(p);
             }
+        }
+
+        void tbox_TextChanged(object sender, EventArgs e)
+        {
+            // double以外の場合など
+            double val;
+            if (Double.TryParse(((TextBox)sender).Text, out val))
+            {
+                inst.GetType().GetProperty(((TextBox)sender).Name).SetValue(inst, val);
+                ((TextBox)sender).ForeColor = SystemColors.ControlText;
+            }
+            else
+            {
+                ((TextBox)sender).ForeColor = Color.Red;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
         }
     }
 }

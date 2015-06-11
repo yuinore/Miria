@@ -145,15 +145,12 @@ namespace MiriaCore
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
-            listBox_procs.Items.Add((new TailCutPlus()).ToString());
-            listBox_procs.Items.Add((new Integral()).ToString());
-            listBox_procs.Items.Add((new Differential()).ToString());
-            listBox_procs.Items.Add((new GainDb()).ToString());
-             */
-
             var f = new AddEffectForm();
-            f.ShowDialog(this);
+            var dialogresult = f.ShowDialog(this);
+            if (f.SelectedAudioProcess != null && dialogresult == DialogResult.OK)
+            {
+                listBox_procs.Items.Add(f.SelectedAudioProcess);  // FIXME: ×ボタンで閉じた場合は無視する
+            }
             f.Dispose();
         }
 
