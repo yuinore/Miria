@@ -10,6 +10,11 @@ namespace MiriaCore.AudioProcesses
     {
         float[][] ImpulseResponse;
 
+        public Convolution()
+        {
+            ImpulseResponse = new float[][] { new float[] { 1.0f } };
+        }
+
         public Convolution(float[][] impulseResponse)
         {
             ImpulseResponse = impulseResponse;

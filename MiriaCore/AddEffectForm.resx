@@ -117,33 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Miria.apt
-
-[About]
-
-This software is inspired by GoldWave.
-If you like Miria, I think you would also like GoldWave!
-http://www.goldwave.com/
-
-----------------------
-Miria Audio Processing Toolbox
-by @yuinore (https://github.com/yuinore)
-License: MIT License
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://twitter.com/popkirby/status/596567894869180416
-https://twitter.com/popkirby/status/596568218774306816</value>
-  </data>
 </root>

@@ -145,10 +145,37 @@ namespace MiriaCore
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             listBox_procs.Items.Add((new TailCutPlus()).ToString());
             listBox_procs.Items.Add((new Integral()).ToString());
             listBox_procs.Items.Add((new Differential()).ToString());
             listBox_procs.Items.Add((new GainDb()).ToString());
+             */
+
+            var f = new AddEffectForm();
+            f.ShowDialog(this);
+            f.Dispose();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int sel = listBox_procs.SelectedIndex;  // 選択されていない場合は -1 を返す
+
+            if (0 <= sel && sel < listBox_procs.Items.Count)
+            {
+                listBox_procs.Items.RemoveAt(sel);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox_procs.Items.Count == 0) return;
+
+            if (MessageBox.Show("Are you sure to clear the batch process list?", "Confirm",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            {
+                listBox_procs.Items.Clear();
+            }
         }
     }
 }
