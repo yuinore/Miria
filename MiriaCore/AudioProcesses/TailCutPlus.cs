@@ -12,13 +12,14 @@ namespace MiriaCore.AudioProcesses
         /// <summary>
         /// 無音と判定する振幅です。(単位：dB)
         /// </summary>
-        public double Threshold = -36;  // dB
+        public double Threshold { get; set; }
 
         /// <summary>
         /// フェードアウトさせる最長の時間です。（単位：秒）
         /// </summary>
-        public double FadeOutTime = 0.002;  // second
+        public double FadeOutTime { get; set; }
         // ゲッター/セッターを書くと自動プロパティが使えないのがつらい（めんどい）
+        // あと、自動プロパティを書くと同じ箇所に初期値が書けないのがつらい（めんどい）
 
         /// <summary>
         /// もし、入力がThresholdを下回る小さな音量だった場合は、
@@ -26,6 +27,12 @@ namespace MiriaCore.AudioProcesses
         /// なお、.wavのタイムスタンプは更新されます。
         /// </summary>
         public bool WriteOriginalIfNoSound = false;
+
+        public TailCutPlus()
+        {
+            Threshold = -36;
+            FadeOutTime = 0.002;
+        }
 
         public override float[][] Do(float[][] buffer)
         {

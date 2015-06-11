@@ -8,7 +8,12 @@ namespace MiriaCore.AudioProcesses
 {
     class GainDb : AudioProcess
     {
-        public double GainInDecibel = 0.0;
+        public double GainInDecibel { get; set; }
+
+        public GainDb()
+        {
+            GainInDecibel = 3.0;
+        }
 
         public override float[][] Do(float[][] buffer)
         {

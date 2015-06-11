@@ -142,5 +142,13 @@ namespace MiriaCore
                 textBox_ir.Text = filename;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBox_procs.Items.Add((new TailCutPlus()).ToString());
+            listBox_procs.Items.Add((new Integral()).ToString());
+            listBox_procs.Items.Add((new Differential()).ToString());
+            listBox_procs.Items.Add((new GainDb()).ToString());
+        }
     }
 }

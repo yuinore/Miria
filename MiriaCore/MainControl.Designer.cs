@@ -52,6 +52,8 @@
             this.button_diff = new System.Windows.Forms.Button();
             this.button_integrate = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.listBox_procs = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -195,7 +197,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(675, 132);
+            this.tabPage2.Size = new System.Drawing.Size(675, 191);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Batch Input";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -206,7 +208,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(675, 132);
+            this.tabPage3.Size = new System.Drawing.Size(675, 191);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "About";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -322,14 +324,39 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.button1);
+            this.tabPage5.Controls.Add(this.listBox_procs);
             this.tabPage5.Controls.Add(this.button_go);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(675, 289);
+            this.tabPage5.Size = new System.Drawing.Size(675, 230);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Batch Process";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // listBox_procs
+            // 
+            this.listBox_procs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox_procs.FormattingEnabled = true;
+            this.listBox_procs.ItemHeight = 12;
+            this.listBox_procs.Location = new System.Drawing.Point(7, 7);
+            this.listBox_procs.Name = "listBox_procs";
+            this.listBox_procs.Size = new System.Drawing.Size(543, 208);
+            this.listBox_procs.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(556, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Add Effect";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainControl
             // 
@@ -380,5 +407,7 @@
         private System.Windows.Forms.Button button_openOutput;
         private System.Windows.Forms.Button button_openInput;
         private System.Windows.Forms.Button button_openIR;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox_procs;
     }
 }
