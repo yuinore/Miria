@@ -52,6 +52,9 @@
     <Compile Include="AudioProcesses\Differential.cs" />
     <Compile Include="AudioProcesses\GainDb.cs" />
     <Compile Include="AudioProcesses\Integral.cs" />
+    <Compile Include="AudioProcesses\Invert.cs" />
+    <Compile Include="AudioProcesses\Offset.cs" />
+    <Compile Include="AudioProcesses\Reverse.cs" />
     <Compile Include="AudioProcesses\TailCutPlus.cs" />
     <Compile Include="MainControl.cs">
       <SubType>UserControl</SubType>
