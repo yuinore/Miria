@@ -174,5 +174,10 @@ namespace MiriaCore
                 listBox_procs.Items.Clear();
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DoBatchProcess();
+        }
     }
 }

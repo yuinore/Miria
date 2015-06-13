@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.13.1.0\lib\net40-client\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -56,6 +59,7 @@
     <Compile Include="AudioProcesses\Offset.cs" />
     <Compile Include="AudioProcesses\Reverse.cs" />
     <Compile Include="AudioProcesses\TailCutPlus.cs" />
+    <Compile Include="AudioProcessFactory.cs" />
     <Compile Include="MainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +84,9 @@
       <Project>{be3e3ecb-845e-4b3f-af7b-6f563229dbf0}</Project>
       <Name>MiriaLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

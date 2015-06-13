@@ -12,27 +12,29 @@ namespace MiriaCore
 {
     partial class MainControl
     {
-        private void DoSingleProcess(AudioProcess proc)
+        private bool GetSingleInputFile(out string inputfile, out string outputfile)
         {
+            inputfile = outputfile = "";
+
             try
             {
                 if (textBox_inputFile.Text == "")
                 {
                     MessageBox.Show("入力ファイルの欄が空欄になってるよ！");
                     textBox_inputFile.Text = "【ここだよ！！】";
-                    return;
+                    return false;
                 }
                 if (textBox_outputFile.Text == "")
                 {
                     MessageBox.Show("出力ファイルの欄が空欄になってるよ！");
                     textBox_outputFile.Text = "【ここだよ！！】";
-                    return;
+                    return false;
                 }
 
                 if (!AudioFileReader.FileExists(textBox_inputFile.Text))
                 {
                     MessageBox.Show("ファイルが無いよー？ : " + textBox_inputFile.Text);
-                    return;
+                    return false;
                 }
                 if (File.Exists(textBox_outputFile.Text))
                 {
@@ -42,15 +44,63 @@ namespace MiriaCore
                         MessageBoxButtons.YesNoCancel,
                         MessageBoxIcon.Question) != DialogResult.Yes)
                     {
-                        return;
+                        return false;
                     }
                 }
 
-                var buf2 = AudioFileReader.ReadAllSamples(textBox_inputFile.Text);
+                inputfile = textBox_inputFile.Text;
+                outputfile = textBox_outputFile.Text;
 
-                var buf3 = proc.Do(buf2);
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("エラーが起きちゃった・・・ごめんね・・・。\r\n\r\nstack trace: \r\n" + e.ToString(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                WaveFileWriter.WriteAllSamples(textBox_outputFile.Text, buf3, buf3.Length, 44100, 32);  // FIXME: サンプリングレートとビット深度
+                return false;
+            }
+        }
+
+        private void DoSingleProcess(AudioProcess proc)
+        {
+            try
+            {
+                string inputfile, outputfile;
+
+                if (GetSingleInputFile(out inputfile, out outputfile))
+                {
+                    var buf2 = AudioFileReader.ReadAllSamples(inputfile);
+
+                    var buf3 = proc.Do(buf2);
+
+                    WaveFileWriter.WriteAllSamples(outputfile, buf3, buf3.Length, 44100, 32);  // FIXME: サンプリングレートとビット深度
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("エラーが起きちゃった・・・ごめんね・・・。\r\n\r\nstack trace: \r\n" + e.ToString(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DoBatchProcess()
+        {
+            try
+            {
+                string inputfile, outputfile;
+
+                if (GetSingleInputFile(out inputfile, out outputfile))
+                {
+                    var buf2 = AudioFileReader.ReadAllSamples(inputfile);
+
+                    for (int k = 0; k < listBox_procs.Items.Count; k++)
+                    {
+                        string query = (string)listBox_procs.Items[k];
+                        var proc = AudioProcessFactory.FromString(query);
+                        buf2 = proc.Do(buf2);
+                    }
+
+                    WaveFileWriter.WriteAllSamples(outputfile, buf2, buf2.Length, 44100, 32);  // FIXME: サンプリングレートとビット深度
+                }
             }
             catch (Exception e)
             {
