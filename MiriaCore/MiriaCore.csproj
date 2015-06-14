@@ -69,6 +69,7 @@
     <Compile Include="MainControl.Methods.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ParameterType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
