@@ -53,6 +53,7 @@
     <Compile Include="AudioProcess.cs" />
     <Compile Include="AudioProcesses\Convolution.cs" />
     <Compile Include="AudioProcesses\Differential.cs" />
+    <Compile Include="AudioProcesses\FadeOut.cs" />
     <Compile Include="AudioProcesses\GainDb.cs" />
     <Compile Include="AudioProcesses\Integral.cs" />
     <Compile Include="AudioProcesses\Invert.cs" />
