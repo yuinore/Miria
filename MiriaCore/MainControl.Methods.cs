@@ -73,6 +73,7 @@ namespace MiriaCore
 
                     var buf3 = proc.Do(buf2);
 
+                    // TODO: 勝手に違う拡張子のファイルを探すのはやめる
                     WaveFileWriter.WriteAllSamples(outputfile, buf3, buf3.Length, 44100, 32);  // FIXME: サンプリングレートとビット深度
                 }
             }

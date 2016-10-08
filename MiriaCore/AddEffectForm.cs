@@ -77,16 +77,33 @@ namespace MiriaCore
 
         void tbox_TextChanged(object sender, EventArgs e)
         {
-            // double以外の場合など
-            double val;
-            if (Double.TryParse(((TextBox)sender).Text, out val))
+            var targetProperty = inst.GetType().GetProperty(((TextBox)sender).Name);
+
+            var targetType = targetProperty.PropertyType;  // DeclareingTypeではない！！！ （これは宣言されたクラスの型を返すっぽい）
+
+            // targetProperty is double はダメ
+            if (targetType == typeof(double))
             {
-                inst.GetType().GetProperty(((TextBox)sender).Name).SetValue(inst, val);
-                ((TextBox)sender).ForeColor = SystemColors.ControlText;
+                double val;
+                if (Double.TryParse(((TextBox)sender).Text, out val))
+                {
+                    targetProperty.SetValue(inst, val);
+                    ((TextBox)sender).ForeColor = SystemColors.ControlText;
+                }
+                else
+                {
+                    ((TextBox)sender).ForeColor = Color.Red;
+                }
             }
-            else
+            else if (targetType == typeof(string))
             {
-                ((TextBox)sender).ForeColor = Color.Red;
+                string val = ((TextBox)sender).Text;
+
+                targetProperty.SetValue(inst, val);
+                ((TextBox)sender).ForeColor = SystemColors.ControlText;
+            }else
+            {
+                Debug.Assert(false);
             }
         }
 

@@ -149,7 +149,7 @@ namespace MiriaCore
             var dialogresult = f.ShowDialog(this);
             if (f.SelectedAudioProcess != null && dialogresult == DialogResult.OK)
             {
-                listBox_procs.Items.Add(f.SelectedAudioProcess);  // FIXME: ×ボタンで閉じた場合は無視する
+                listBox_procs.Items.Add(f.SelectedAudioProcess);
             }
             f.Dispose();
         }
@@ -178,6 +178,11 @@ namespace MiriaCore
         private void button4_Click(object sender, EventArgs e)
         {
             DoBatchProcess();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DoSingleProcess(new Expression());
         }
     }
 }

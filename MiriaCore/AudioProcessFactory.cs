@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,13 +38,32 @@ namespace MiriaCore
                     {
                         int idx = row[k].IndexOf("=");
                         if (idx < 0) throw new Exception();
-
+                        
                         string propertyName = row[k].Substring(0, idx).Trim();
-                        string propertyValueString = row[k].Substring(idx + 1).Trim();
-                        double propertyValueDouble = Convert.ToDouble(propertyValueString);
+                        var targetProperty = procType.GetProperty(propertyName);  // 先頭に空白文字が入ってたしそれに気付かなかったしきれそう
+                        var targetPropertyType = targetProperty.PropertyType;
 
-                        var prop = procType.GetProperty(propertyName);  // 先頭に空白文字が入ってたしそれに気付かなかったしきれそう
-                        prop.SetValue(proc, propertyValueDouble);
+                            string propertyValueString = row[k].Substring(idx + 1).Trim();
+
+                        if (propertyValueString.StartsWith("\"")&& propertyValueString.EndsWith("\""))
+                        {
+                            propertyValueString = propertyValueString.Substring(1, propertyValueString.Length - 2).Replace("\"\"", "\"");
+                        }
+
+                        if(targetPropertyType == typeof(double))
+                        {
+                            double propertyValueDouble = Convert.ToDouble(propertyValueString);
+
+                            targetProperty.SetValue(proc, propertyValueDouble);
+                        }
+                        else if(targetPropertyType == typeof(string))
+                        {
+                            targetProperty.SetValue(proc, propertyValueString);
+                        }
+                        else
+                        {
+                            Debug.Assert(false);
+                        }
                     }
 
                     return proc;

@@ -27,7 +27,7 @@ namespace MiriaCore
                 string propValue = prop.GetValue(this).ToString();
                 if (propValue.IndexOfAny(new[] { '=', '"', ' ', ',' }) != -1)
                 {
-                    propValue = "\"" + propValue.Replace("\"", "\"\"") + "\"";
+                    propValue = "\"" + propValue.Replace("\"", "\"\"") + "\"";  // FIXME: CSVの生成を自前で書くな！！！！！！
                 }
 
                 // ↓改行や'\0'は含まないと仮定

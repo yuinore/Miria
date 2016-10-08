@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClearScript, Version=5.4.6.0, Culture=neutral, PublicKeyToken=935d0c957da47c73, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClearScript.V8.5.4.6\lib\net40\ClearScript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CsvHelper">
       <HintPath>..\packages\CsvHelper.2.13.1.0\lib\net40-client\CsvHelper.dll</HintPath>
     </Reference>
@@ -53,6 +57,7 @@
     <Compile Include="AudioProcess.cs" />
     <Compile Include="AudioProcesses\Convolution.cs" />
     <Compile Include="AudioProcesses\Differential.cs" />
+    <Compile Include="AudioProcesses\Expression.cs" />
     <Compile Include="AudioProcesses\FadeOut.cs" />
     <Compile Include="AudioProcesses\GainDb.cs" />
     <Compile Include="AudioProcesses\Integral.cs" />
@@ -68,6 +73,7 @@
       <DependentUpon>MainControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MainControl.Methods.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ParameterType.cs" />
@@ -88,9 +94,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Licenses\ClearScript.main.license" />
+    <None Include="Licenses\v8.main.license" />
+    <None Include="Licenses\v8.strongtalk.license" />
+    <None Include="Licenses\v8.v8.license" />
+    <None Include="Licenses\v8.valgrind.license" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Exports\CallbackManager.h" />
+    <Content Include="Exports\VersionSymbols.h" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+if not exist "$(TargetDir)" md "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.6\tools\native\x86\*.*" "$(TargetDir)"
+if not exist "$(TargetDir)" md "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\ClearScript.V8.5.4.6\tools\native\amd64\*.*" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
