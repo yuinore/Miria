@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
             this.button_openIR = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button_tailcutplus = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox_procs = new System.Windows.Forms.ListBox();
-            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -222,7 +222,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(302, 324);
+            this.label1.Size = new System.Drawing.Size(302, 540);
             this.label1.TabIndex = 0;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -254,6 +254,16 @@
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Single Process";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(22, 140);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(126, 23);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Expression";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button_openIR
             // 
@@ -398,16 +408,6 @@
             this.listBox_procs.Name = "listBox_procs";
             this.listBox_procs.Size = new System.Drawing.Size(543, 208);
             this.listBox_procs.TabIndex = 1;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(22, 140);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(126, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Expression";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MainControl
             // 

@@ -31,7 +31,14 @@ namespace MiriaCore
                 }
 
                 // ↓改行や'\0'は含まないと仮定
-                ret.Append(", " + prop.Name + "=" + propValue);
+
+                string csvfield = prop.Name + "=" + propValue;
+
+                if (csvfield.IndexOfAny(new[] { '=', '"', ' ', ',' }) != -1)
+                {
+                    csvfield = "\"" + csvfield.Replace("\"", "\"\"") + "\"";  // FIXME: CSVの生成を自前で書くな！！！！！！
+                }
+                ret.Append("," + csvfield);
             }
 
             return ret.ToString();

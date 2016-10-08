@@ -27,7 +27,7 @@ namespace MiriaCore.AudioProcesses
             using (var engine = new V8ScriptEngine())
             {
                 int BLOCK_SIZE = 8192;
-                
+
                 engine.Execute("__mapper = (" + ExpressionCode + ")");
 
                 var code1 = engine.Compile(
@@ -48,14 +48,24 @@ namespace MiriaCore.AudioProcesses
 
                         var s = new StringBuilder();
                         s.Append("__inputArray = [");
-                        s.Append(string.Join(",", Enumerable.Range(fromInclusive, toExclusive - fromInclusive).Select(i => channelOfBuffer[i] + "")));  // こんなアホみたいな方法でも意外と速くて草
+                        
+                        // 配列ではなく文字列に変換して渡すことにより大幅に高速化
+                        s.Append(string.Join(",", Enumerable.Range(fromInclusive, toExclusive - fromInclusive).Select(i =>
+                        {
+                            var x = channelOfBuffer[i];
+
+                            if (float.IsNaN(x)) { return "NaN"; }  // ここいる？？
+                            else if (float.IsNegativeInfinity(x)) { return "-Infinity"; }
+                            else if (float.IsPositiveInfinity(x)) { return "Infinity"; }
+
+                            return x.ToString();
+                        })));
+
                         s.Append("];");
 
                         engine.Execute(engine.Compile(s.ToString()));
 
                         dynamic result = engine.Evaluate(code1);
-
-                        // 配列を渡すのではなく、文字列に変換して渡すことにより大幅に高速化
 
                         float[] result3 = ((string)result).Split(',').Select(x =>
                         {

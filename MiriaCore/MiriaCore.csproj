@@ -54,6 +54,7 @@
     <Compile Include="AddEffectForm.Designer.cs">
       <DependentUpon>AddEffectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddEffectMethods.cs" />
     <Compile Include="AudioProcess.cs" />
     <Compile Include="AudioProcesses\Convolution.cs" />
     <Compile Include="AudioProcesses\Differential.cs" />

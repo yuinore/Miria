@@ -19,15 +19,15 @@ namespace MiriaCore
             InitializeComponent();
         }
 
-        AudioProcess inst;
+        AddEffectMethods addEffectMethods = new AddEffectMethods();
 
         public string SelectedAudioProcess
         {
             get
             {
-                if (inst == null) return null;
+                if (addEffectMethods.inst == null) return null;
 
-                return inst.ToString();
+                return addEffectMethods.inst.ToString();
             }
         }
 
@@ -48,63 +48,8 @@ namespace MiriaCore
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            flowLayoutPanel1.Controls.Clear();
-
-            label1.Text = "Explanation here. Explanation here. Explanation here. Explanation here. Explanation here.";
-
-            Type procType = Type.GetType("MiriaCore.AudioProcesses." + comboBox1.SelectedItem.ToString());
-
-            inst = (AudioProcess) Activator.CreateInstance(procType);
-
-            foreach (var prop in procType.GetProperties())
-            {
-                // パブリックかどうかをチェックする必要はないね？
-
-                var p = new FlowLayoutPanel();
-                p.FlowDirection = FlowDirection.LeftToRight;
-                p.BorderStyle = BorderStyle.None;
-                p.AutoScroll = false;
-                p.WrapContents = false;
-                p.AutoSize = true;
-                p.Controls.Add(new Label() { Text = prop.Name, Margin = new System.Windows.Forms.Padding(7) });
-                var tbox = new TextBox() { Text = prop.GetValue(inst).ToString(), Name = prop.Name };
-                tbox.TextChanged += tbox_TextChanged;
-                p.Controls.Add(tbox);
-
-                flowLayoutPanel1.Controls.Add(p);
-            }
-        }
-
-        void tbox_TextChanged(object sender, EventArgs e)
-        {
-            var targetProperty = inst.GetType().GetProperty(((TextBox)sender).Name);
-
-            var targetType = targetProperty.PropertyType;  // DeclareingTypeではない！！！ （これは宣言されたクラスの型を返すっぽい）
-
-            // targetProperty is double はダメ
-            if (targetType == typeof(double))
-            {
-                double val;
-                if (Double.TryParse(((TextBox)sender).Text, out val))
-                {
-                    targetProperty.SetValue(inst, val);
-                    ((TextBox)sender).ForeColor = SystemColors.ControlText;
-                }
-                else
-                {
-                    ((TextBox)sender).ForeColor = Color.Red;
-                }
-            }
-            else if (targetType == typeof(string))
-            {
-                string val = ((TextBox)sender).Text;
-
-                targetProperty.SetValue(inst, val);
-                ((TextBox)sender).ForeColor = SystemColors.ControlText;
-            }else
-            {
-                Debug.Assert(false);
-            }
+            addEffectMethods.EffectSelector_SelectedIndexChanged(
+                flowLayoutPanel1, label1, comboBox1, sender, e);
         }
 
         private void button1_Click(object sender, EventArgs e)
