@@ -164,4 +164,7 @@ License: MIT License
 https://twitter.com/popkirby/status/596567894869180416
 https://twitter.com/popkirby/status/596568218774306816</value>
   </data>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

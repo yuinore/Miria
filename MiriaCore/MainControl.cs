@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using HatoLib;
 using MiriaCore.AudioProcesses;
+using System.Diagnostics;
 
 namespace MiriaCore
 {
@@ -182,7 +183,13 @@ namespace MiriaCore
 
         private void button5_Click(object sender, EventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
             DoSingleProcess(new Expression());
+
+            sw.Stop();
+            toolStripStatusLabel1.Text ="Finished. " + sw.ElapsedMilliseconds + "ms";
         }
     }
 }
